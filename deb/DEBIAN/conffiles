@@ -1,0 +1,3 @@
+/etc/apparmor.d/adbd
+/etc/apparmor.d/android_app
+/etc/apparmor.d/lxc/lxc-waydroid

@@ -1,0 +1,9 @@
+[Unit]
+Description=Waydroid Container
+
+[Service]
+BusName=id.waydro.Container
+ExecStart=/usr/bin/waydroid -w container start
+
+[Install]
+WantedBy=multi-user.target

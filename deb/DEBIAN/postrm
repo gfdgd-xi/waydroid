@@ -1,0 +1,54 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_installsystemd/13.3.4
+if [ -d /run/systemd/system ] && [ "$1" = remove ]; then
+	systemctl --system daemon-reload >/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_installsystemd/13.3.4
+if [ "$1" = "remove" ]; then
+	if [ -x "/usr/bin/deb-systemd-helper" ]; then
+		deb-systemd-helper mask 'waydroid-container.service' >/dev/null || true
+	fi
+fi
+
+if [ "$1" = "purge" ]; then
+	if [ -x "/usr/bin/deb-systemd-helper" ]; then
+		deb-systemd-helper purge 'waydroid-container.service' >/dev/null || true
+		deb-systemd-helper unmask 'waydroid-container.service' >/dev/null || true
+	fi
+fi
+# End automatically added section
+# Automatically added by dh_apparmor/2.13.6-10
+if [ "$1" = "purge" ] && ! [ -e "/etc/apparmor.d/lxc/lxc-waydroid" ] ; then
+    rm -f "/etc/apparmor.d/disable/lxc/lxc-waydroid" || true
+    rm -f "/etc/apparmor.d/force-complain/lxc/lxc-waydroid" || true
+    rm -f "/etc/apparmor.d/local/lxc/lxc-waydroid" || true
+    rm -f /var/cache/apparmor/*/"lxc/lxc-waydroid" || true
+    rmdir /etc/apparmor.d/disable 2>/dev/null || true
+    rmdir /etc/apparmor.d/local   2>/dev/null || true
+    rmdir /etc/apparmor.d         2>/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_apparmor/2.13.6-10
+if [ "$1" = "purge" ] && ! [ -e "/etc/apparmor.d/android_app" ] ; then
+    rm -f "/etc/apparmor.d/disable/android_app" || true
+    rm -f "/etc/apparmor.d/force-complain/android_app" || true
+    rm -f "/etc/apparmor.d/local/android_app" || true
+    rm -f /var/cache/apparmor/*/"android_app" || true
+    rmdir /etc/apparmor.d/disable 2>/dev/null || true
+    rmdir /etc/apparmor.d/local   2>/dev/null || true
+    rmdir /etc/apparmor.d         2>/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_apparmor/2.13.6-10
+if [ "$1" = "purge" ] && ! [ -e "/etc/apparmor.d/adbd" ] ; then
+    rm -f "/etc/apparmor.d/disable/adbd" || true
+    rm -f "/etc/apparmor.d/force-complain/adbd" || true
+    rm -f "/etc/apparmor.d/local/adbd" || true
+    rm -f /var/cache/apparmor/*/"adbd" || true
+    rmdir /etc/apparmor.d/disable 2>/dev/null || true
+    rmdir /etc/apparmor.d/local   2>/dev/null || true
+    rmdir /etc/apparmor.d         2>/dev/null || true
+fi
+# End automatically added section
