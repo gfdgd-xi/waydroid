@@ -110,4 +110,5 @@ if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-decon
 fi
 # End automatically added section
 # Set Image
-waydroid init -f
+systemctl restart waydroid-container.service | true
+waydroid init -f | true
