@@ -4,15 +4,17 @@ if [[ ! -e $HOME/.local/share/waydroid/data/data/$1 ]]; then
     echo 未安装，立即安装！
     if [[ -f /usr/share/waydroid/apk/`basename $1`.apk ]]; then
         (
-            waydroid-install-dpkg $2
+            echo '#正在安装……' 
+            waydroid-install-dpkg /usr/share/waydroid/apk/`basename $1`.apk -x11
             if [[ $? == 0 ]]; then
                 echo '#安装完成！' 
             else
                 echo '#安装超时！'
             fi
-        ) | zenity --progress --pulsate
+        ) | zenity --progress --pulsate --auto-close
+        waydroid app launch $1
     else
-        zenity --error --text="Error"
+        zenity --error --text="找不到APK"
     fi
 
     exit

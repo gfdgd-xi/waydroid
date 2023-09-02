@@ -14,18 +14,10 @@ if [[ $XDG_RUNTIME_DIR == "" ]]; then
 fi
 # 判断是不是 wayland 下
 ls /run/user/$UID/wayland-*
-if [[ $? != 0 ]]; then
-    echo 非 Waydroid
-    which sway > /dev/null 2>&1
-    if [[ $? == 0 ]]; then
-        nohup sway > /dev/null 2>&1 &
-    else
-        which weston > /dev/null 2>&1
-        if [[ $? == 0 ]]; then
-            nohup weston > /dev/null 2>&1 &
-        fi
-    fi
-    
+if [[ $? != 0 ]] && [[ $2 != x11 ]]; then
+    echo 非 Wayland
+    echo 不在deb安装过程安装apk
+    exit 0
 fi
 sleep 1
 nohup waydroid session start > /dev/null 2>&1 &
